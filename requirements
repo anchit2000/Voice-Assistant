@@ -1,0 +1,6 @@
+pip install SpeechRecogniton # for listening to what i am saying
+pip install pyttsx3  # python text to speech
+pip install PyAudio  #"brew install portaudio" if giving errors # to make voice assistant talk
+pip install pywhatkit # to make voice assistant interactive (such as youtube video, google search, wikipedia search, send mail, send whatsapp message etc etc.)
+pip install wikipedia # to get search results in wikipedia as string
+pip install pyjokes # to tell us jokes
