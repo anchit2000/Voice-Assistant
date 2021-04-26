@@ -26,20 +26,26 @@ def take_command():
             talk("I am listening")
             print("listening")
             print("try saying \"what can you do\"")
-            with sr.Microphone() as source:
-                voice = listener.listen(source)
-                speech = listener.recognize_google(voice).lower()
-            return speech
+            run_assistant()
         else:
             take_command()
+
 
     except:
         talk("Please check your microphone")
         print("check your microphone")
 
+def command_input():
+    with sr.Microphone() as source:
+        voice = listener.listen(source)
+        speech = listener.recognize_google(voice).lower()
+    return str(speech)
+
 
 def run_assistant():
-    command = take_command()
+    command = command_input()
+    print("command was "+command)
+    #command  = str(command)
     if 'play' in command:
         song = command.replace("play","")
         talk("Playing "+song)
@@ -74,7 +80,6 @@ def run_assistant():
         print(command)
 
     elif 'what can you do' in command:
-        help = command
         talk("Here's what you can ask me to do.")
         print("if you want me to play something from youtube, say \'play + name of the song\'")
         print("if you want me to search something from google, say \'google search + keyword\'")
@@ -114,10 +119,7 @@ def run_assistant():
 
 
 
-
-
-
 if __name__ == '__main__':
     print("Say assistant to activate")
     while True:
-        run_assistant()
+        take_command()
